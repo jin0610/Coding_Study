@@ -1,3 +1,5 @@
+# 17140번 이차원 배열과 연산
+
 # 문제에서 제시한 정렬 연산
 def sort_cal(arr):
     max_row = 0
@@ -10,7 +12,7 @@ def sort_cal(arr):
             temp.append([n, arr[i].count(n)])
         temp = sorted(temp, key = lambda x : (x[1], x[0]))
         temp = sum(temp, [])
-        arr[i] = temp[:100]	
+        arr[i] = temp[:100]	# 행,열이 100개가 넘을 경우, 100 이후의 원소 제거
         max_row = max(max_row, len(arr[i]))
 
     for i in range(len(arr)):
@@ -41,8 +43,8 @@ while True:
         A = sort_cal(A)
     # 행의 개수 < 열의 개수인 경우, C연산(C_cal)
     else:
-        A = list(zip(*A))
+        A = list(zip(*A))   # 행과 열을 바꿔 비교
         A = sort_cal(A)
-        A = list(zip(*A))	# 전환한 배열 되돌리기
+        A = list(zip(*A))   # 비교하기 위해 바꾼 배열을 되돌리기
     
     sec += 1
