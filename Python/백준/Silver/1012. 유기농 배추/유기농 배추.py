@@ -1,4 +1,6 @@
+import sys
 from collections import deque
+input = sys.stdin.readline
 T = int(input())
 
 dx, dy = [0, 0, -1, 1], [-1, 1, 0, 0]
