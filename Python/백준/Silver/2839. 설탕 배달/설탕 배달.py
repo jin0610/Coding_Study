@@ -2,7 +2,7 @@ import sys
 inf = sys.maxsize
 
 N = int(input())
-dp = [inf] * 5001
+dp = [inf] * (max(5, N) + 1)
 
 dp[3] = 1
 dp[4] = inf
