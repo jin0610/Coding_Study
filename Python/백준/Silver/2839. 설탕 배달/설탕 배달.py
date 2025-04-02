@@ -1,16 +1,17 @@
 import sys
+inf = sys.maxsize
+
 N = int(input())
+dp = [inf] * 5001
 
-total = sys.maxsize
-is_N = False
-for i in range(N // 5, -1, -1):
-    re = N - (i * 5)
-    if re % 3 != 0:
-        continue
-    total = min(total, i + (re // 3))
-    is_N = True
+dp[3] = 1
+dp[4] = inf
+dp[5] = 1
 
-if not is_N:
-    print(-1)
+for n in range(5, N + 1):
+    dp[n] = min(dp[n], dp[n - 3] + 1, dp[n-5] + 1)
+
+if dp[N] != inf:
+    print(dp[N])
 else:
-    print(total)
+    print(-1)
