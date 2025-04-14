@@ -5,7 +5,6 @@ input = sys.stdin.readline
 # 북, 북동, 동, 동남, 남, 남서, 서, 북서
 dx, dy = [0, 1, 1, 1, 0, -1, -1, -1],[-1, -1, 0, 1, 1, 1, 0, -1]
 def bfs(x, y):
-    global _map
     _map[y][x] = 0
     q = deque([(x, y)])
     while q:
