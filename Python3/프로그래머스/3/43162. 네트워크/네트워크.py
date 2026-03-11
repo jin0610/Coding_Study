@@ -4,7 +4,7 @@ def dfs(v, n, computers):
     
     for i in range(n):
         if computers[v][i] == 1 and not visited[i]:
-            visited[v] = True
+            visited[i] = True
             dfs(i, n, computers)
     
 def solution(n, computers):
