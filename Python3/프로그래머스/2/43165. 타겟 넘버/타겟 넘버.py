@@ -1,24 +1,16 @@
-#### backtracking ####
-selected = []
+#### DFS ####
 answer = 0
-def backtracking(curr_n, idx, numbers, target):
-    global selected, answer
-    
-    if curr_n == len(numbers):
-        if sum(selected) == target:
+def dfs(curr_idx, value, numbers, target):
+    global answer
+    if curr_idx == len(numbers):
+        if value == target:
             answer += 1
         return
     
-    selected.append(numbers[idx])
-    backtracking(curr_n + 1, idx + 1, numbers, target)
-    selected.pop()
-    
-    selected.append(-1 * numbers[idx])
-    backtracking(curr_n + 1, idx + 1, numbers, target)
-    selected.pop()
-    
+    dfs(curr_idx + 1, value + numbers[curr_idx], numbers, target)
+    dfs(curr_idx + 1, value - numbers[curr_idx], numbers, target)
+        
 def solution(numbers, target):
     global answer
-    backtracking(0, 0, numbers, target)
-    
+    dfs(0, 0, numbers, target)
     return answer
