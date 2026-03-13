@@ -1,21 +1,16 @@
-visited = []
-def dfs(v, n, computers):
-    global visited
-    
-    for i in range(n):
-        if computers[v][i] == 1 and not visited[i]:
-            visited[i] = True
-            dfs(i, n, computers)
-    
 def solution(n, computers):
-    global visited
-    visited = [False for _ in range(n)]
     answer = 0
+    visited = [False] * n
+    
+    def dfs(v):
+        visited[v] = True
+        
+        for next_v in range(n):
+            if computers[v][next_v] == 1 and not visited[next_v]:
+                dfs(next_v)
+                
     for i in range(n):
         if not visited[i]:
-            visited[i] = True
-
-            dfs(i, n, computers)
             answer += 1
-    
+            dfs(i)
     return answer
