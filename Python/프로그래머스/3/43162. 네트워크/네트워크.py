@@ -2,15 +2,16 @@ def solution(n, computers):
     answer = 0
     visited = [False] * n
     
-    def dfs(v):
-        visited[v] = True
+    def find_network(curr_com):
+        nonlocal visited, computers
         
-        for next_v in range(n):
-            if computers[v][next_v] == 1 and not visited[next_v]:
-                dfs(next_v)
-                
-    for i in range(n):
-        if not visited[i]:
+        visited[curr_com] = True
+        for next_com in range(n):
+            if not visited[next_com] and computers[curr_com][next_com] == 1:
+                find_network(next_com)
+    
+    for start_com in range(n):
+        if not visited[start_com]:
+            find_network(start_com)
             answer += 1
-            dfs(i)
     return answer
